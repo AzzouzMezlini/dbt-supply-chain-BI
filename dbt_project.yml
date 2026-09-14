@@ -1,0 +1,19 @@
+name: 'pme_data_warehouse'
+version: '1.0.0'
+config-version: 2
+
+profile: 'pme_data_warehouse' # Nom du profil à cibler dans profiles.yml
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+models:
+  pme_data_warehouse:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+      
