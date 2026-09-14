@@ -4,7 +4,7 @@ with ventes as (
     (quantite * prix_unitaire)::numeric(12,2) as montant_brut_ht,
     
     -- Calcul du montant net HT (remplacement de v.montant_net_ht) :
-    (quantite * prix_unitaire * (1 - coalesce(taux_remise, 0)))::numeric(12,2) as montant_net_ht,
+    (quantite * prix_unitaire * (1 - coalesce(taux_remise, 0)))::numeric(12,2) as montant_net_ht
      from {{ ref('stg_ventes') }}
 ),
 produits as (
