@@ -12,6 +12,7 @@ macro-paths: ["macros"]
 
 models:
   pme_data_warehouse:
+    +schema: dbt
     staging:
       +materialized: view
     marts:
