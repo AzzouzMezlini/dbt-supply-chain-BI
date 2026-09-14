@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Tables sources brutes de la supply chain française issues du simulateur Python."
+    tables:
+      - name: produits
+        description: "Catalogue des produits et leurs caractéristiques de base (coût, prix, taux de possession)."
+      - name: fournisseur
+        description: "Liste des fournisseurs partenaires actifs et leur localisation."
+      - name: produit_fournisseur
+        description: "Association entre les produits et leurs fournisseurs avec les quantités minimales de commande (MOQ) et indicateur principal."
+      - name: route_achat
+        description: "Routes logistiques d'acheminement depuis les fournisseurs vers les hubs (délais, coûts, modes de transport)."
+      - name: achat
+        description: "Historique des bons de commande d'achat (PO) passés auprès des fournisseurs."
+      - name: entreprise_client
+        description: "Répertoire des clients finaux (segments, localisations)."
+      - name: canal_vente
+        description: "Canaux de distribution et leurs SLAs associés (Web, Magasin, Gros, B2B)."
+      - name: vente
+        description: "Historique détaillé des commandes clients livrées ou partielles."
+      - name: vente_perdue
+        description: "Enregistrement des ruptures de stock et des volumes/CA non réalisés."
+      - name: stock_journalier
+        description: "Suivi quotidien des états de stock, des quantités en transit et des coûts de possession par produit."
+      - name: segment_abc
+        description: "Classification ABC glissante mensuelle des produits basée sur le chiffre d'affaires."
+      - name: calendrier
+        description: "Calendrier de référence 2025 avec jours fériés, week-ends et structures temporelles."
+      - name: evenements_speciaux
+        description: "Calendrier des opérations commerciales nationales (Soldes, Black Friday, etc.)."
+      - name: meteo_propre
+        description: "Données météorologiques journalières par ville logistique (températures, précipitations, alertes)."
