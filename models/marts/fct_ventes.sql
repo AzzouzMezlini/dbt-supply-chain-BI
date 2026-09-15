@@ -35,7 +35,7 @@ select
     -- Classe ABC historique au moment de la vente :
     coalesce(s.classe_abc, 'C') as classe_abc
 from ventes v
--- left join produits p on v.produit_id = p.produit_id
+left join produits p on v.produit_id = p.produit_id
 left join segment_abc s
     on v.produit_id = s.produit_id
     and v.date_commande >= s.debut_periode
