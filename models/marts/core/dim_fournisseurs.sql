@@ -4,7 +4,7 @@ with fournisseurs as (
 select
     fournisseur_id,
     nom_fournisseur,
-    ville_fournisseur,
+    id_ville_fournisseur,
     pays_fournisseur,
     est_actif
 from fournisseurs

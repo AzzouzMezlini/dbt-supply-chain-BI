@@ -5,8 +5,8 @@ renamed as (
     select
         route_id::bigint as route_id,
         fournisseur_id::bigint as fournisseur_id,
-        ville_origine::text as ville_origine,
-        ville_destination::text as ville_destination,
+        id_ville_origine::text as id_ville_origine,
+        id_ville_destination::text as id_ville_destination,
         mode_transport::text as mode_transport,
         
         -- Délais et Coûts
