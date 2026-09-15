@@ -1,10 +1,19 @@
 with commandes as (
     select * from {{ ref('stg_commandes_clients') }}
+),
+
+segment_abc as (
+    select 
+        produit_id,
+        debut_periode::date as debut_periode,
+        fin_periode::date as fin_periode,
+        classe_abc
+    from {{ ref('stg_segment_abc') }}
 )
 select
     commande_id,
     client_id,                  -- Clé vers dim_clients
-    produit_id,                 -- Clé vers dim_produits
+    c.produit_id,                 -- Clé vers dim_produits
     canal_id,                   -- Clé vers dim_canaux
     
     -- Dates (jalons du cycle de vie)
@@ -30,6 +39,12 @@ select
     case 
         when date_livraison_effective > date_livraison_prevue then true 
         else false 
-    end as est_en_retard
+    end as est_en_retard,
+    -- Classe ABC historique au moment de la vente :
+    coalesce(s.classe_abc, 'C') as classe_abc
 
-from commandes
+from commandes c
+left join segment_abc s
+    on c.produit_id = s.produit_id
+    and c.date_commande >= s.debut_periode
+    and c.date_commande <= s.fin_periode
