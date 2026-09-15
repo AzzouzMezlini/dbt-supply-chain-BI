@@ -4,6 +4,6 @@ with clients as (
 select
     client_id,
     nom_client,
-    ville_client,
+    id_ville_client,
     segment_client
 from clients

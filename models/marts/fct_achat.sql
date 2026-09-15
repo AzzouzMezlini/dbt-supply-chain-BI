@@ -3,16 +3,24 @@ with achats as (
 )
 select
     ligne_po_id,
-    produit_id,         -- Clé vers dim_produits
-    fournisseur_id,     -- Clé vers dim_fournisseurs
-    route_id,           -- Clé vers stg_routes_achat / dim_routes
+    produit_id,
+    fournisseur_id,
+    route_id,
     date_commande,
+    date_livraison_prevue,
     date_reception,
-    delai_livraison_jours,
+    
+    -- Remplacer delai_livraison_jours par le calcul de l'écart réel :
+    (date_reception - date_commande)::integer as delai_livraison_jours,
+    
+    -- Ou utiliser le délai théorique directement :
+    delai_theorique_jours,
+    
     quantite_commandee,
     quantite_recue,
-    (quantite_commandee - quantite_recue) as quantite_non_livree,
     cout_unitaire,
-    montant_total_achat,
-    devise_achat
+    cout_transport_alloue,
+    cout_revient_total,
+    devise_achat,
+    statut_commande
 from achats

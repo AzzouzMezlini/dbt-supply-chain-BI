@@ -5,7 +5,7 @@ renamed as (
     select
         client_id::bigint as client_id,
         nom_client::text as nom_client,
-        ville_client::text as ville_client,
+        id_ville_client::text as id_ville_client,
         segment_client::text as segment_client
     from source
 )
