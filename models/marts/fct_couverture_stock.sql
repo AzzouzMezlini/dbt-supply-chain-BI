@@ -20,6 +20,7 @@ select
     s.quantite_en_transit,
     s.quantite_reservee,
     s.quantite_disponible,
+    s.valeur_stock_fin_journee,
     round((s.quantite_en_stock * p.cout_base)::numeric, 2) as valeur_stock_cout,
     -- Classe ABC exacte à la date de la prise de vue du stock :
     coalesce(abc.classe_abc, 'C') as classe_abc
