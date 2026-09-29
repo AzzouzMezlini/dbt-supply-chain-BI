@@ -33,5 +33,5 @@ sources:
         description: "Calendrier des opérations commerciales nationales (Soldes, Black Friday, etc.)."
       - name: meteo_propre
         description: "Données météorologiques journalières par ville logistique (températures, précipitations, alertes)."
-      - name: ville
-        description: "Répertoire des villes logistiques et leurs caractéristiques géographiques."
+      - name: villes
+        description: "Répertoire des villes logistiques et leurs caractéristiques géographiques (INSEE, population, coordonnées GPS)."
